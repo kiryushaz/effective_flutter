@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'widgets/title.dart';
+import 'pages/profile.dart';
+import 'pages/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,8 +11,8 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   static const List<Map> _tabs = [
-    {'text': 'Профиль', 'view': Center(child: Text("This is profile page"))},
-    {'text': 'Настройки', 'view': Center(child: Text("This is settings page"))},
+    {'text': 'Профиль', 'view': ProfilePage()},
+    {'text': 'Настройки', 'view': SettingsPage()},
   ];
 
   @override
