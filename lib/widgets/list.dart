@@ -10,70 +10,47 @@ class SberList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SectionHeader(
-          title: "Тарифы и лимиты", 
+          title: "Тарифы и лимиты",
           subtitle: "Для операций в Сбербанк Онлайн"
         ),
         Column(
           children: <Widget>[
-            for (Map item in items) SberListItem(icon: item['icon'], title: item['title'], subtitle: item['subtitle'])
+            for (final (index, item) in items.indexed) ...{
+              ListTile(
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(item['title']))
+                  );
+                },
+                contentPadding: const EdgeInsets.all(0),
+                leading: SvgPicture.asset(item['icon']),
+                title: Text(item['title']),
+                titleTextStyle: const TextStyle(
+                  fontFamily: 'SFProText',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  letterSpacing: -0.40,
+                ),
+                subtitle: item['subtitle'].isNotEmpty ? Padding(
+                  padding: const EdgeInsets.only(top: 2),
+                  child: Text(item['subtitle']),
+                ) : null,
+                subtitleTextStyle: const TextStyle(
+                  color: Colors.black54,
+                  fontFamily: 'SFProText',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                  letterSpacing: -0.40
+                ),
+                trailing: SvgPicture.asset('assets/images/ic_24_chevron_right.svg'),
+              ),
+              if (index != items.length - 1) const Divider(height: 4, indent: 48)
+            }
           ],
         ),
       ]
-    );
-  }
-}
-
-class SberListItem extends StatelessWidget {
-  const SberListItem({super.key,
-    required this.icon,
-    required this.title,
-    required this.subtitle
-  });
-
-  final String icon;
-  final String title;
-  final String subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 12),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset(icon),
-              Container(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      letterSpacing: -0.40,
-                    ),
-                  ),
-                  if (subtitle.isNotEmpty) Text(subtitle, 
-                    style: const TextStyle(
-                      color: Colors.black54,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      letterSpacing: -0.40
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          SvgPicture.asset('assets/images/ic_24_chevron_right.svg'),
-        ],
-      ),
     );
   }
 }
