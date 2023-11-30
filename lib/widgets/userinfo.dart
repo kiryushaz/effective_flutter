@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../themes/strings.dart';
 
 class ProfileBar extends StatelessWidget {
   const ProfileBar({super.key,
@@ -19,7 +20,7 @@ class ProfileBar extends StatelessWidget {
         IconButton(
           onPressed: () {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('close'))
+              SnackBar(content: Text(getString['snackbarclose'] ?? ''))
             );
           },
           icon: SvgPicture.asset('assets/images/ic_24_cross.svg'),
@@ -32,20 +33,13 @@ class ProfileBar extends StatelessWidget {
               height: 110,
             ),
             const SizedBox(height: 36),
-            Text(name,
-              style: const TextStyle(
-                fontFamily: 'SFProDisplay',
-                fontWeight: FontWeight.w700,
-                fontSize: 24,
-                letterSpacing: -0.7
-              ),
-            ),
+            Text(name, style: Theme.of(context).textTheme.titleLarge),
           ],
         ),
         IconButton(
           onPressed: () {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('logout'))
+              SnackBar(content: Text(getString['snackbarlogout'] ?? ''))
             );
           },
           icon: SvgPicture.asset('assets/images/ic_24_arrow_right_square.svg'),

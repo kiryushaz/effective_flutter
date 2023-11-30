@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'header.dart';
+import '../themes/strings.dart';
 
 class Carousel extends StatelessWidget {
   const Carousel({super.key, required this.items});
@@ -12,9 +13,9 @@ class Carousel extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SectionHeader(
-          title: "У вас подключено", 
-          subtitle: "Подписки, автоплатежи и сервисы на которые вы подписались"
+        SectionHeader(
+          title: getString['carouselheadertitle'] ?? '', 
+          subtitle: getString['carouselheadersubtitle'] ?? '',
         ),
         Container(height: 8),
         SingleChildScrollView(
@@ -51,9 +52,9 @@ class CarouselItem extends StatelessWidget {
     return Container(
       width: 216,
       height: 130,
-      decoration: const ShapeDecoration(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
+      decoration: ShapeDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(12))
         )
       ),
@@ -61,7 +62,7 @@ class CarouselItem extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(12)),
         color: Colors.transparent,
         child: InkWell(
-          hoverColor: Colors.white,
+          hoverColor: Theme.of(context).colorScheme.surface,
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -77,33 +78,18 @@ class CarouselItem extends StatelessWidget {
                 Row(children: [
                   SvgPicture.asset(icon),
                   Container(width: 12),
-                  Text(name, 
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: -0.4
-                    )
-                  ),
+                  Text(name, style: Theme.of(context).textTheme.bodyLarge),
                 ]),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(title,
-                      style: const TextStyle(
-                        fontSize: 14, 
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: -0.4
-                      ),
+                      style: Theme.of(context).textTheme.titleSmall,
                       maxLines: 1,
                       softWrap: false,
                     ),
                     Text(subtitle,
-                      style: const TextStyle(
-                        color: Colors.black54, 
-                        fontSize: 14, 
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: -0.4
-                      ),
+                      style: Theme.of(context).textTheme.bodySmall,
                       maxLines: 1,
                       softWrap: false,
                     ),

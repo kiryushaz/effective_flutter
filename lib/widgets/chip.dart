@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'header.dart';
+import '../themes/colors.dart';
+import '../themes/strings.dart';
 
 class SberCards extends StatelessWidget {
   const SberCards({super.key, required this.items});
@@ -11,9 +13,9 @@ class SberCards extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SectionHeader(
-          title: "Интересы", 
-          subtitle: "Мы подбираем истории и предложения по темам, которые вам нравятся"
+        SectionHeader(
+          title: getString['chipsheadertitle'] ?? '',
+          subtitle: getString['chipsheadersubtitle'] ?? '',
         ),
         Container(height: 4),
         Wrap(
@@ -52,18 +54,12 @@ class _SberCardItemState extends State<SberCardItem> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
         decoration: ShapeDecoration(
-          color: _selected ? Colors.green.withOpacity(0.55) : Colors.black.withOpacity(0.08),
+          color: _selected ? AppColors.selectedChipColor : AppColors.chipColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
         ),
-        child: Text(widget.item, 
-          style: const TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 14,
-            letterSpacing: -0.4
-          ),
-        )
+        child: Text(widget.item, style: Theme.of(context).textTheme.titleSmall)
       )
     );
   }
