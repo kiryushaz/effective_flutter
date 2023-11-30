@@ -13,9 +13,13 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.all(16),
-        child: const Column(
+        child: Column(
           children: [
-            Carousel(items: _carousel)
+            const Carousel(items: _carousel),
+            Container(height: 32),
+            // тарифы и лимиты
+            Container(height: 32),
+            // интересы
           ],
         ),
     );
