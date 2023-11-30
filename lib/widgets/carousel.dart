@@ -21,8 +21,10 @@ class Carousel extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: <Widget>[
-              for (Map item in items) 
+              for (final (index, item) in items.indexed) ...{
                 CarouselItem(icon: item['icon'], name: item['name'], title: item['title'], subtitle: item['subtitle']),
+                if (index != items.length - 1) Container(width: 8)
+              }
             ]
           ),
         ),
@@ -49,55 +51,69 @@ class CarouselItem extends StatelessWidget {
     return Container(
       width: 216,
       height: 130,
-      padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.only(right: 8),
       decoration: const ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(12))
         )
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(children: [
-            SvgPicture.asset(icon),
-            Container(width: 12),
-            Text(name, 
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                letterSpacing: -0.4
-              )
-            ),
-          ]),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title,
-                style: const TextStyle(
-                  fontSize: 14, 
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: -0.4
-                ),
-                maxLines: 1,
-                softWrap: false,
-              ),
-              Text(subtitle,
-                style: const TextStyle(
-                  color: Colors.black54, 
-                  fontSize: 14, 
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: -0.4
-                ),
-                maxLines: 1,
-                softWrap: false,
-              ),
-            ],
+      child: Material(
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        color: Colors.transparent,
+        child: InkWell(
+          hoverColor: Colors.white,
+          borderRadius: const BorderRadius.all(Radius.circular(12)),
+          onTap: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('$name: $title, $subtitle'))
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(children: [
+                  SvgPicture.asset(icon),
+                  Container(width: 12),
+                  Text(name, 
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: -0.4
+                    )
+                  ),
+                ]),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title,
+                      style: const TextStyle(
+                        fontSize: 14, 
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: -0.4
+                      ),
+                      maxLines: 1,
+                      softWrap: false,
+                    ),
+                    Text(subtitle,
+                      style: const TextStyle(
+                        color: Colors.black54, 
+                        fontSize: 14, 
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: -0.4
+                      ),
+                      maxLines: 1,
+                      softWrap: false,
+                    ),
+                  ],
+                )
+              ],
+            )
           )
-        ],
-      ),
+        )
+      )
     );
   }
 }
