@@ -28,6 +28,7 @@ class SberList extends StatelessWidget {
                 leading: SvgPicture.asset(item['icon']),
                 title: Text(item['title']),
                 titleTextStyle: const TextStyle(
+                  color: Colors.black,
                   fontFamily: 'SFProText',
                   fontWeight: FontWeight.w500,
                   fontSize: 16,

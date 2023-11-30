@@ -43,6 +43,7 @@ class _SberCardItemState extends State<SberCardItem> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(16),
       onTap: () {
         setState(() {
           _selected = !_selected;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class TitleBar extends StatelessWidget {
-  const TitleBar({super.key,
+class ProfileBar extends StatelessWidget {
+  const ProfileBar({super.key,
     required this.image,
     required this.name
   });
@@ -16,7 +16,15 @@ class TitleBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SvgPicture.asset('assets/images/ic_24_cross.svg'),
+        IconButton(
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('close'))
+            );
+          },
+          icon: SvgPicture.asset('assets/images/ic_24_cross.svg'),
+          padding: const EdgeInsets.all(0),
+        ),
         Column(
           children: [
             Image.asset(image,
@@ -34,7 +42,15 @@ class TitleBar extends StatelessWidget {
             ),
           ],
         ),
-        SvgPicture.asset('assets/images/ic_24_arrow_right_square.svg'),
+        IconButton(
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('logout'))
+            );
+          },
+          icon: SvgPicture.asset('assets/images/ic_24_arrow_right_square.svg'),
+          padding: const EdgeInsets.all(0),
+        ),
       ],
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'widgets/title.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'widgets/home.dart';
 import 'pages/profile.dart';
 import 'pages/settings.dart';
 
@@ -29,25 +30,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: DefaultTabController(
-        length: _tabs.length,
-        child: Scaffold(
-          appBar: AppBar(
-            title: const TitleBar(image: 'assets/images/avatar.png', name: 'Екатерина'),
-            toolbarHeight: 250,
-            bottom: TabBar(
-              labelStyle: const TextStyle(fontSize: 16, letterSpacing: -0.40),
-              labelColor: Colors.black,
-              unselectedLabelColor: Colors.black54,
-              indicatorSize: TabBarIndicatorSize.tab,
-              tabs: [for (var item in _tabs) Tab(text: item['text'])],
-            ),
-          ),
-          body: TabBarView(
-            children: <Widget>[for (var item in _tabs) item['view']],
-          ),
-        ),
-      )
+      home: const HomePage(tabs: _tabs)
     );
   }
 }
