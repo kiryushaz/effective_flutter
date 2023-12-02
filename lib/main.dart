@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'widgets/home.dart';
+import 'pages/home.dart';
 import 'pages/profile.dart';
 import 'pages/settings.dart';
 import 'themes/themes.dart';
@@ -21,9 +21,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Sber App',
+      title: getString['maintitle'] ?? '',
       theme: sberTheme(),
-      home: HomePage(tabs: _tabs)
+      home: Container(
+        color: Theme.of(context).colorScheme.surface,
+        child: SafeArea(
+          child: HomePage(tabs: _tabs)
+        )
+      )
     );
   }
 }

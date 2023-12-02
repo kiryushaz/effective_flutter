@@ -1,6 +1,7 @@
 const Map<String, String> getString = {
     'tab1': 'Профиль',
     'tab2': 'Настройки',
+    'maintitle': 'Sber App',
     'carouselheadertitle': 'У вас подключено',
     'carouselheadersubtitle': 'Подписки, автоплатежи и сервисы на которые вы подписались',
     'carouselname1': 'СберПрайм',
