@@ -1,16 +1,44 @@
-# effective_flutter
+# Лабораторная работа Flutter
+В данной лабораторной работе необходимо было реализовать макет экрана с использованием Flutter.
 
-A new Flutter project.
+* Версия Flutter: 3.16.2
+* Dart: 3.2.2
+* DevTools: 2.28.3
 
-## Getting Started
+Данный репозиторий содержит исходники приложения. В конце README представлены скрины.
 
-This project is a starting point for a Flutter application.
+[Скачать приложение на Android](https://disk.yandex.ru/d/SwM09KjHH_rpVw)
 
-A few resources to get you started if this is your first Flutter project:
+Чтобы открыть проект, необходимо скачать репозиторий:
+```git
+git clone https://github.com/kiryushaz/effective_flutter.git
+```
+И убедиться, что приложение работает.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Проверено на телефоне под ОС Android `Samsung Galaxy M31S (Android 12)`:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p align="center">
+<img src="screenshots/Screenshot_20231202-191543.jpg" width="33%"/>
+<img src="screenshots/Screenshot_20231202-191552.jpg" width="33%"/>
+<p>
+
+Проверено на эмуляторе Android `Pixel 7 Pro API 33`:
+
+<p align="center">
+<img src="screenshots/Screenshot_1701522565.png" width="33%"/>
+<img src="screenshots/Screenshot_1701522594.png" width="33%"/>
+<p>
+
+Проверено на `Nexus 5X`:
+
+<p align="center">
+<img src="screenshots/localhost_53299_(Nexus 5X) (1).png" width="33%"/>
+<img src="screenshots/localhost_53299_(Nexus 5X) (2).png" width="33%"/>
+<p>
+
+Проверено на `Windows 10`:
+
+<p align="center">
+<img src="screenshots/image.png" width="33%"/>
+<img src="screenshots/image-1.png" width="33%"/>
+<p>
